@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-const mongodb = require('./data/database')
+const mongodb = require('./data/database');
 
+
+app.use(bodyParser.json());
 app.use('/', require('./routes/index'));
 app.use('/contacts', require('./routes/contacts'))
 
