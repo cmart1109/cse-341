@@ -5,10 +5,10 @@
     "description": "API para gestionar contactos",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse-341-1izn.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "consumes": [
     "application/json"
@@ -57,7 +57,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Contact Created Succesfully"
+            "description": "Contact Created Successfully"
           }
         }
       }
@@ -97,7 +97,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Contact Updated Succesfully",
+            "description": "Contact data to update",
             "required": true,
             "schema": {
               "type": "object",
@@ -120,7 +120,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Contact Updated Succesfully"
+            "description": "Contact Updated Successfully"
           },
           "404": {
             "description": "Contact not found"
@@ -128,7 +128,7 @@
         }
       },
       "delete": {
-        "summary": "Delete contact por ID",
+        "summary": "Delete Contact by ID",
         "tags": ["Contacts"],
         "parameters": [
           {
@@ -141,7 +141,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Contact Deleted Succesfully"
+            "description": "Contact Deleted Successfully"
           },
           "404": {
             "description": "Contact not found"
