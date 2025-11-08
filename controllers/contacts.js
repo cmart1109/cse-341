@@ -44,7 +44,7 @@ const updateContact = async (req,res) => {
         favouriteColor: req.body.favouriteColor,
         birthday: req.body.birthday
     }
-    const response = await mongodb.getDatabase().db().collection('contacts').insertOne({ _id: contactId}, contact);
+    const response = await mongodb.getDatabase().db().collection('contacts').replaceOne({ _id: contactId}, contact);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else { 
@@ -55,7 +55,7 @@ const updateContact = async (req,res) => {
 const deleteContact = async (req,res) => {
     const contactId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({ _id: contactId}, true);
-    if (response.deleteCount > 0) {
+    if (response.deletedCount > 0) {
         res.status(204).send();
     } else { 
         res.status(500).json(response.error || 'Some error ocurred while deleting the contact.')

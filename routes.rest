@@ -25,10 +25,11 @@ content-type: application/json
 ###
 
 #Update Contact
-PUT http://localhost:3000/contacts/6903a384e7c5534cac476aa6 HTTP/1.1
+PUT http://localhost:3000/contacts/6903a2dde7c5534cac476aa5 HTTP/1.1
 content-type: application/json
 
 {
+    "firstName": "Andre",
     "lastName":"Rodriguez",
     "email":"chrisitian@mongo.das",
     "favouriteColor":"Blue",
@@ -38,4 +39,4 @@ content-type: application/json
 ###
 
 #Delete Contact
-DELETE http://localhost:3000/contacts/690d7d89750cf84b17757ce8 HTTP/1.1
+DELETE http://localhost:3000/contacts/690fbe321a0156fd9ba8ad12 HTTP/1.1
