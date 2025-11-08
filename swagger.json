@@ -1,36 +1,150 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts Api",
-    "description": "Contacts Api",
+    "title": "Contacts API",
+    "description": "API para gestionar contactos",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
   ],
   "paths": {
-    "/": {
+    "/contacts": {
       "get": {
-        "tags": [
-          "Hello World"
-        ],
-        "description": "",
+        "summary": "All Contacts",
+        "tags": ["Contacts"],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Get All Contacts"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Contact",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Contact Info",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "email": { "type": "string" },
+                "favouriteColor": { "type": "string" },
+                "birthday": { "type": "string" }
+              },
+              "example": {
+                "firstName": "Alberto",
+                "lastName": "Martinez",
+                "email": "chrismartinez@mongo.das",
+                "favouriteColor": "Green",
+                "birthday": "8-16-1978"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Contact Created Succesfully"
           }
         }
       }
     },
-    "/api-docs": {
+    "/contacts/{id}": {
       "get": {
-        "description": "",
+        "summary": "Get Contact by ID",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "example": "6903a2dde7c5534cac476aa5"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "Contact Info"
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Contact by ID",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Contact Updated Succesfully",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "email": { "type": "string" },
+                "favouriteColor": { "type": "string" },
+                "birthday": { "type": "string" }
+              },
+              "example": {
+                "firstName": "Andre",
+                "lastName": "Rodriguez",
+                "email": "chrisitian@mongo.das",
+                "favouriteColor": "Blue",
+                "birthday": "12-5-2002"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact Updated Succesfully"
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete contact por ID",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "example": "690fbe321a0156fd9ba8ad12"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact Deleted Succesfully"
+          },
+          "404": {
+            "description": "Contact not found"
           }
         }
       }
